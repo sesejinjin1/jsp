@@ -11,7 +11,7 @@
 	<%
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
-		
+		String userId = (String)session.getAttribute("userId");
 		ResultSet rs = null;
 		Statement stmt = null;
 		
@@ -20,7 +20,7 @@
 			String query = "insert into tbl_board values"
 			+ "("
 			+"NULL, '" + title + "', '" + contents
-			+ "', 0, ' user1', 'number', now(),now() " +
+			+ "', 0, '" + userId +"', 'number', now(),now() " +
 			")";
 			stmt.executeUpdate(query);
 			

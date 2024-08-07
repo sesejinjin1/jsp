@@ -20,11 +20,12 @@
 
 </head>
 <body>
+	<div><button onclick="location.href='login.jsp'">로그아웃</button></div>
 	<%@include file="db2.jsp"%>	
 	<%
 	ResultSet rs = null;
 	Statement stmt = null;
-	
+	System.out.println();
 	try{
 		stmt = conn.createStatement();
 		String querytext = "SELECT * FROM TBL_BOARD";
