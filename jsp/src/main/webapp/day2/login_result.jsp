@@ -22,7 +22,7 @@
 
 </head>
 <body>
-	<%@include file="db2.jsp"%>	
+	<%@include file="db.jsp"%>	
 	<%
 		ResultSet rs = null;
 		Statement stmt = null;
@@ -45,13 +45,16 @@
 					out.println("5번이상 실패했으니까 관리자한테 문의하셈");
 				} else {
 					// 로그인 성공
-					if(rs.getString("userId").equals("admin")){
-						session.setAttribute("userId", rs.getString("userId"));
-						response.sendRedirect("user-list.jsp");	
-					}else{
 					session.setAttribute("userId", rs.getString("userId"));
-					response.sendRedirect("board2.jsp");
+					session.setAttribute("status", rs.getString("status"));
+					if(rs.getString("status").equals("A")){ // 권한이 A
+						// user-list.jsp 이동
+						response.sendRedirect("user-list.jsp");
+					} else {
+						// board-list2.jsp 이동
+						response.sendRedirect("board-list2.jsp");
 					}
+					
 				}
 			} else {
 				// 아이디나 패스워가 다를 경우
@@ -73,6 +76,7 @@
 								+ "cnt = cnt + 1 "
 								+ "WHERE userId = '" + id + "'";
 						stmt.executeUpdate(querytext);
+						/* out.println(rs.getString("userId")); */
 					}
 				} else {
 					// 없는 아이디로 로그인 시도

@@ -25,8 +25,8 @@
 
 </head>
 <body>
-<form action="board-delete.jsp">
-	<%@include file="db2.jsp"%>	
+<form action="board-update-result.jsp">
+	<%@include file="db.jsp"%>	
 	<%
 		ResultSet rs = null;
 		Statement stmt = null;
