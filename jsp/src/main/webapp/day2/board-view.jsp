@@ -68,7 +68,7 @@
 			%>
 					<div> <%= rs.getString("userId") %> : <%= rs.getString("comment") %> </div>
 					<button>수정</button>
-					<button type="button" onclick="fnCommentDel('<%= rs.getInt("commentNo") %>')">삭제</button>
+					<button type="button" onclick="fnCommentDel('<%=rs.getInt("commentNo") %>')">삭제</button>
 			<%	} %>		
 				
 	<%			
@@ -103,8 +103,8 @@
 	}
 	function fnCommentDel(commentNo){
 		var form = document.board;
-		form.action = "comment-delete.jsp?commentNo = " + commentNo;
-		form.submit();
+		location.href = "comment-delete.jsp?commentNo = " + commentNo;
+		
 	}
 	
 </script>
