@@ -12,7 +12,7 @@
 	<%
 		Connection conn;
 		Class.forName("com.mysql.jdbc.Driver");
-		String db_url = "jdbc:mysql://localhost:3306/sample";
+		String db_url = "jdbc:mysql://localhost:3306/mini";
 		String db_id = "root";
 		String db_pw = "test1234";
 		conn = DriverManager.getConnection(db_url, db_id, db_pw);

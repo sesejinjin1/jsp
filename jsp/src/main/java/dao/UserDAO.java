@@ -12,7 +12,7 @@ import java.util.List;
 import model.User;
 
 public class UserDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/sample";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/mini";
     private String jdbcUsername = "root";
     private String jdbcPassword = "test1234";
     private Connection jdbcConnection;

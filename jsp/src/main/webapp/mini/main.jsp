@@ -1,81 +1,121 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Main</title>
-<style>
-#body {
-	width: 1200px;
-	height: 1300px
-}
-
-#header {
-	width: 100%;
-	border-bottom: 1px solid #ddd;
-	background-color: #fff;
-}
-
-#header h1 {
-	padding: 10px;
-	margin: 0;
-	font-weight: bold;
-	font-size: 25px;
-}
-
-#container {
-	width: 100%;
-	height: 100%
-}
-
-#footer { width: 100%; height: 50px; padding: 10px; border-top: 1px solid #ddd; background-color: #fff;}
-#header header #GNB	{}
-#GNB aside.top .align_box {
-    position: relative;
-    max-width: 1280px;
-    margin: 0 auto;
-}
-#GNB aside.top .align_box nav ul	{ float: right; }
-#GNB aside.top .align_box nav ul li	{ float: left; padding: 0; margin: 0; list-style: none; }
-#GNB aside.top .align_box nav ul li + li	{ position: relative; padding-left: 30px; }
-#GNB aside.top .align_box nav ul li a	{ display: block; line-height: 45px; padding-left: 29px; background: no-repeat left center; color: #1b1b1b; font-size: 16px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미니프로젝트</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<div id="body">
-		<div id="header">
-			<header>
-				<h1>
-					<a href="main.jsp"><span>홈페이지</span></a>
-				</h1>
-				<p class="slogan">홈페이지에 오신것을 환영합니다.</p>
-				<div id="GNB">
-					<aside class="top">
-						<div class="align_box">
-							<nav>
-								<ul>
-									<li><a href="login.jsp"><span>로그인</span></a></li>
-									<li><a href="join.jsp"><span>회원가입</span></a></li>
-									<li><a href="#"><span>ㅁㅁㅁ</span></a></li>
-								</ul>
-							</nav>	
-						</div>
-					</aside>
-					<div id="topmenu">
-						<nav>
-							<ul>
-								<li><a>hi1</a></li>
-								<li><a>hi2</a></li>
-								<li><a>hi3</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</header>
-		</div>
-		<div id="container">컨테ㅔㅔㅔㅔㅔ</div>
-		<footer id="footer"> 푸터ㅓㅓㅓㅓㅓ </footer>
-	</div>
+    <header>
+        <div class="top-bar">
+            <div class="actions">
+            	<%if(session.getAttribute("userId") != null){ %>
+            	<p> <%=session.getAttribute("userId") %> 님 환영합니다.</p>
+            	<a href="#" class="logout">로그아웃</a>
+            	<%} else{%>
+                <a href="login.jsp" class="login">로그인</a>
+                <a href="join.jsp" class="signup">회원가입</a>
+                <%}  %>
+            </div>
+        </div>
+        <div class="main-header container">
+            <div class="logo">
+                <a href="main.jsp">세세진진</a> <!-- 홈 링크 추가 -->
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item dropdown">
+                        <a href="#">메뉴1</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">서브 메뉴 1</a></li>
+                            <li><a href="#">서브 메뉴 2</a></li>
+                            <li><a href="#">서브 메뉴 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#">메뉴2</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">서브 메뉴 1</a></li>
+                            <li><a href="#">서브 메뉴 2</a></li>
+                            <li><a href="#">서브 메뉴 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#">메뉴3</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">서브 메뉴 1</a></li>
+                            <li><a href="#">서브 메뉴 2</a></li>
+                            <li><a href="#">서브 메뉴 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#">메뉴4</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">서브 메뉴 1</a></li>
+                            <li><a href="#">서브 메뉴 2</a></li>
+                            <li><a href="#">서브 메뉴 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="top-section">
+
+        
+        
+        
+            <h2>링크 목록</h2>
+            <div class="info-boxes">
+                <div class="info-box img">
+                    <h3>링크 1</h3>
+                    <p> 링크11111111111111</p>
+                </div>
+                <div class="info-box">
+                    <h3>링크2</h3>
+                    <p>링크2링크2링크2</p>
+                </div>
+                <div class="info-box">
+                    <h3>링크 3</h3>
+                    <p>링크 3</p>
+                </div>
+                <div class="info-box">
+                    <h3> 4</h3>
+                    <p> 4</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-section">
+            <h2>공지사항</h2>
+            <div class="info-boxes">
+                <div class="info-box">
+                    <h3>공지사항 1</h3>
+                    <p>공지사항 1.</p>
+                </div>
+                <div class="info-box">
+                    <h3>공지사항 2</h3>
+                    <p>공지사항 2 .</p>
+                </div>
+                <div class="info-box">
+                    <h3>공지사항 3</h3>
+                    <p>공지사항 3 .</p>
+                </div>
+                <div class="info-box">
+                    <h3>공지사항 4</h3>
+                    <p>공지사항 4 .</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 세세진진 사이트.</p>
+    </footer>
 </body>
 </html>
