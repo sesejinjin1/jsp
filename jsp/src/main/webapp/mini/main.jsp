@@ -12,9 +12,9 @@
     <header>
         <div class="top-bar">
             <div class="actions">
-            	<%if(session.getAttribute("userId") != null){ %>
-            	<p> <%=session.getAttribute("userId") %> 님 환영합니다.</p>
-            	<a href="#" class="logout">로그아웃</a>
+            	<%if((String)session.getAttribute("userId") != null){ %>
+            	<p> <%= (String)session.getAttribute("userId") %> 님 환영합니다.</p>
+            	<a href="logoutAction.jsp" class="logout">로그아웃</a>
             	<%} else{%>
                 <a href="login.jsp" class="login">로그인</a>
                 <a href="join.jsp" class="signup">회원가입</a>
@@ -70,19 +70,19 @@
         
         
         
-            <h2>링크 목록</h2>
+            <h2> 목록 </h2>
             <div class="info-boxes">
                 <div class="info-box img">
-                    <h3>링크 1</h3>
-                    <p> 링크11111111111111</p>
+                    <h3>목록1</h3>
+                    <p> 목록</p>
                 </div>
                 <div class="info-box">
-                    <h3>링크2</h3>
-                    <p>링크2링크2링크2</p>
+                    <h3>목록2</h3>
+                    <p>목록2목록</p>
                 </div>
                 <div class="info-box">
-                    <h3>링크 3</h3>
-                    <p>링크 3</p>
+                    <h3>목록 3</h3>
+                    <p>목록 3</p>
                 </div>
                 <div class="info-box">
                     <h3> 4</h3>

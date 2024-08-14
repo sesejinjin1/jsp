@@ -12,8 +12,13 @@
     <header>
         <div class="top-bar">
             <div class="actions">
+            	<%if((String)session.getAttribute("userId") != null){ %>
+            	<p> <%= (String)session.getAttribute("userId") %> 님 환영합니다.</p>
+            	<a href="logoutAction.jsp" class="logout">로그아웃</a>
+            	<%} else{%>
                 <a href="login.jsp" class="login">로그인</a>
                 <a href="join.jsp" class="signup">회원가입</a>
+                <%}  %>
             </div>
         </div>
         <div class="main-header container">
@@ -76,7 +81,7 @@
                         <p class="link_box">
 						    <a href="#">회원가입</a>
 						    <a href="#">아이디찾기</a>
-						    <a href=#">비밀번호찾기</a>
+						    <a href="#">비밀번호찾기</a>
 						</p>
                     </div>
         </div>

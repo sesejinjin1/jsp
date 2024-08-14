@@ -11,11 +11,16 @@
 <body>
 	<header>
 		<div class="top-bar">
-			<div class="actions">
-				<a href="login.jsp" class="login">로그인</a> <a href="join.jsp"
-					class="signup">회원가입</a>
-			</div>
-		</div>
+            <div class="actions">
+            	<%if((String)session.getAttribute("userId") != null){ %>
+            	<p> <%= (String)session.getAttribute("userId") %> 님 환영합니다.</p>
+            	<a href="logoutAction.jsp" class="logout">로그아웃</a>
+            	<%} else{%>
+                <a href="login.jsp" class="login">로그인</a>
+                <a href="join.jsp" class="signup">회원가입</a>
+                <%}  %>
+            </div>
+        </div>
 		<div class="main-header container">
 			<div class="logo">
 				<a href="main.jsp">세세진진</a>
@@ -55,7 +60,7 @@
 	<main class="container">
 		<div class="top-section">
 			<h2 style="text-align: center;">회원 가입</h2>
-			<form id="memberLoginForm" action="#" method="post"
+			<form id="joinForm" action="joinAction.jsp" method="post"
 				style="text-align: center;">
 				<fieldset style="width: 80%; margin-left: 10%;">
 					<legend>회원 가입</legend>
@@ -94,8 +99,8 @@
 								value="" maxlength="11" />
 						</p>
 						<p>
-							<label for="userEmail">이메일 주소 </label><input id="userEmail"
-								name="userEmail" placeholder="이메일 주소" type="text" value=""
+							<label for="userEmail">이메일 주소 </label><input id="userEmail1"
+								name="userEmail1" placeholder="이메일 주소" type="text" value=""
 								maxlength="30" /> @ <label for="userEmail2"></label><input
 								id="userEmail2" name="userEmail2" placeholder="이메일 주소"
 								type="text" value="" maxlength="30" />
@@ -106,7 +111,7 @@
 								name="userGender" value="F"></label>
 						</p>
 						<p>
-							<button type="button">회원가입</button>
+							<button type="submit">회원가입</button>
 							<button type="reset">다시입력</button>
 						</p>
 					</div>
