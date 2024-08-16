@@ -1,9 +1,7 @@
-<%@page import="java.awt.Checkbox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
 <%@ page import="java.sql.*"%>
-
 <%@ page import="java.io.PrintWriter" %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +22,7 @@
 	
 	try {
 		stmt = conn.createStatement();
-		String query = "SELECT * FROM TBL_USER WHERE userId='" + id +"'";
+		String query = "SELECT * FROM mini_user WHERE userId='" + id +"'";
 		rs = stmt.executeQuery(query);
 		System.out.println(query);
 		
@@ -32,7 +30,7 @@
 			if (rs.next()) {
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("alert('중복된 아이디입니다..')");
+				script.println("alert('중복된 아이디입니다.')");
 				script.println("history.back()");
 				script.println("</script>");
 			} else {

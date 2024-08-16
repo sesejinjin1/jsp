@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="java.io.PrintWriter" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +26,15 @@
 		String gender = request.getParameter("userGender");
 		try{
 			stmt = conn.createStatement();
-			String query = "INSERT INTO mini_user (userId, userPwd, userName, userJumin1, userJumin2, userPhone, userGender, userEmail, userEmail2) VALUES ('"
-							+ id +"', '" + pwd + "' , '" + name  + "' , '" + jumin1  + "' , '" + jumin2  + "' , '" + phone  + "' , '" + email1  + "' , '" + email2  + "' , '" + gender + "' )";
+			String query = "INSERT INTO mini_user (userId, userPwd, userName, userJumin1, userJumin2, userPhone, userGender, userEmail) VALUES ('"
+							+ id +"', '" + pwd + "' , '" + name  + "' , '" + jumin1  + "' , '" + jumin2  + "' , '" + phone  + "' , '" + email1  + "' , '" + gender  + "' )";
 			//System.out.println(query);
 			stmt.executeUpdate(query);
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('"+ name + "님 회원가입 되었습니다.')");
+			script.println("location.href = 'main.jsp'");
+			script.println("</script>");
 		}catch(SQLException ex){
 			out.println("SQLException :" + ex.getMessage());
 		}

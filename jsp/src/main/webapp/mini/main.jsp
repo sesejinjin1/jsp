@@ -14,6 +14,10 @@
             <div class="actions">
             	<%if((String)session.getAttribute("userId") != null){ %>
             	<p> <%= (String)session.getAttribute("userId") %> 님 환영합니다.</p>
+            		<%if(session.getAttribute("status").equals("A")){ %>
+            			<a href="userlist.jsp" class="logout">회원목록</a>
+            			<%} %>
+            			
             	<a href="logoutAction.jsp" class="logout">로그아웃</a>
             	<%} else{%>
                 <a href="login.jsp" class="login">로그인</a>

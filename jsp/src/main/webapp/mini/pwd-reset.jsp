@@ -44,7 +44,6 @@
 </html>
 <script>
 	alert("초기화 되었습니다.");
-	window.close();
-	window.opener.fnReload();
+	location.href="userlist.jsp";
 </script>
 ​

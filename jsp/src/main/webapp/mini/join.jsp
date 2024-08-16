@@ -61,7 +61,7 @@
 		<div class="top-section">
 			<h2 style="text-align: center;">회원 가입</h2>
 			<form id="joinForm" action="joinAction.jsp" method="post"
-				style="text-align: center;">
+				style="text-align: center;" name="joinForm">
 				<fieldset style="width: 80%; margin-left: 10%;">
 					<legend>회원 가입</legend>
 					<div class="inbox">
@@ -69,7 +69,7 @@
 							<label for="userId">아이디 </label><input id="userId" name="userId"
 								style="ime-mode: disabled;" placeholder="아이디"
 								autofocus="autofocus" type="text" value="" maxlength="30" />
-							<button type="button">중복확인</button>
+							<button type="button" onclick="fnCheck()"> 중복체크 </button>
 						</p>
 						<p>
 							<label for="userPwd">비밀번호 </label><input id="userPwd"
@@ -77,19 +77,19 @@
 								maxlength="30" />
 						</p>
 						<p>
-							<label for="userPwd">비밀번호 확인 </label><input id="userPwd2"
+							<label for="userPwd2">비밀번호 확인 </label><input id="userPwd2"
 								name="userPwd2" placeholder="비밀번호 확인" type="password" value=""
 								maxlength="30" />
 						</p>
 						<p>
-							<label for="userPwd">이름 </label><input id="userName"
+							<label for="userName">이름 </label><input id="userName"
 								name="userName" placeholder="이름" type="text" value=""
 								maxlength="30" />
 						</p>
 						<p>
 							<label for="userJumin1">주민등록번호 </label><input id="userJumin1"
 								name="userJumin1" placeholder="앞 6자리" type="text" value=""
-								maxlength="6" /> - <label><input id="userJumin2"
+								maxlength="6" /> - <input id="userJumin2"
 								name="userJumin2" placeholder="뒤 7자리" type="text" value=""
 								maxlength="7" />
 						</p>
@@ -101,17 +101,15 @@
 						<p>
 							<label for="userEmail">이메일 주소 </label><input id="userEmail1"
 								name="userEmail1" placeholder="이메일 주소" type="text" value=""
-								maxlength="30" /> @ <label for="userEmail2"></label><input
-								id="userEmail2" name="userEmail2" placeholder="이메일 주소"
-								type="text" value="" maxlength="30" />
+								maxlength="30" />
 						</p>
 						<p>
 							성별 : <label>남 <input type="radio" name="userGender"
-								value="M"></label> <label>여 <input type="radio"
+								value="M" checked="checked" ></label> <label>여 <input type="radio"
 								name="userGender" value="F"></label>
 						</p>
 						<p>
-							<button type="submit">회원가입</button>
+							<button type="button" onclick="fnSave()">회원가입</button>
 							<button type="reset">다시입력</button>
 						</p>
 					</div>
@@ -126,3 +124,4 @@
 	</footer>
 </body>
 </html>
+<script src="joincheck.js"></script>

@@ -33,6 +33,7 @@ main { display: flex; flex-direction: column; padding: 20px; flex: 1; min-height
 .info-box { flex: 1 1 22%; background: #f4f4f4; padding: 10px; border: 1px solid #ddd; border-radius: 5px; text-align: center; box-sizing: border-box;}
 .info-box img {width: 100%; height: auto; border-radius: 5px;}
 
+.updateUser {color: white; text-decoration: none; font-size: 24px; font-weight: bold;}
 /* .info-box p {margin: 10px 0 0; height: 70%;} */
 /* .info-box p a {display: block; height: 100% ;  border-radius: 10px; box-sizing: border-box; background-color: #fff; text-align: center; font-size: 28px; color: #2b2b2b; box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1); background-image: url(../images/back.jpg); background-size: cover;} */
 
