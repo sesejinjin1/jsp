@@ -85,26 +85,67 @@
 
     <main class="container">
         <div class="login-container">
-        <h2>회원 로그인</h2>
-						<form id="loginForm" action="loginAction.jsp" method="post" class="login-form">
-                            <fieldset>	
-                                	<div class="form-group">
-                                   		<p><label for="userId">아이디</label><input id="userId" name="userId" placeholder="아이디" autofocus="autofocus" type="text" value="" maxlength="15"/></p>
-									</div>
-									<div class="form-group">
-										<p><label for="userPwd">비밀번호</label><input id="userPwd" name="userPwd" placeholder="비밀번호" type="password" value="" maxlength="15"/></p>
-									</div>
-									<div class="form-group">
-										<button type="submit">로그인</button>
-									</div>
-								
-					    	</fieldset>
-                        </form>
-                    <div class="link_box">
-						    <a href="join.jsp">회원가입</a>
-						    <a href="#">아이디찾기</a>
-						    <a href="#">비밀번호찾기</a>
-                    </div>
+        <h2>공지사항</h2>
+				<%@include file="db.jsp"%>	
+				<%
+				ResultSet rs = null;
+				Statement stmt = null;
+				System.out.println(session.getAttribute("userId"));
+				try{
+					stmt = conn.createStatement();
+					String query = 
+							  "SELECT B.boardNo, title, B.cnt, cdatetime, userName, commentCnt, B.userId "
+							+ "FROM board_notice B "
+							+ "INNER JOIN mini_user U ON B.userId = U.userId "
+							+ "LEFT JOIN ( "
+							+ 	"SELECT COUNT(*) AS commentCnt, boardNo "
+							+	"FROM board_comment "
+							+	"GROUP BY boardNo "
+							+ ") C ON B.boardNo = C.boardNo";
+					rs = stmt.executeQuery(query);
+					System.out.println(query);
+				%>
+					<table>
+					<tr>
+						<th> 번호 </th>
+						<th> 제목 </th>
+						<th> 작성자 </th>
+						<th> 조회수 </th>
+						<th> 작성일 </th>
+					</tr>			
+				<%
+				while (rs.next()) {
+					String commentCnt = "";
+					if(rs.getString("commentCnt") != null){
+						commentCnt = "(" + rs.getString("commentCnt") + ")";
+					} 
+				%>
+					<tr>
+						<td> <%= rs.getString("boardNo") %></td>
+						<td> 
+							<a href="#" onclick="fnView('<%= rs.getString("boardNo") %>')">
+								<%= rs.getString("title") %> <%= commentCnt %>
+							</a>
+						</td>
+						<td>						
+						 		<%= rs.getString("userName") %>
+						 </td>
+						<td> <%= rs.getString("cnt") %></td>
+						<td> <%= rs.getString("cdatetime") %></td>
+					</tr>
+				<%
+				}
+				%>
+				
+				</table>
+				<button onclick="location.href='board-noticeIn.jsp'">글쓰기</button>
+				<%
+				} catch(SQLException ex) {
+					out.println("SQLException : " + ex.getMessage());
+				}
+				%>
+									
+                   
         </div>
 						
     </main>
@@ -114,3 +155,8 @@
     </footer>
 </body>
 </html>
+<script>
+	function fnView(boardNo){
+		location.href="board-noticeView.jsp?boardNo="+boardNo;
+	}
+</script>

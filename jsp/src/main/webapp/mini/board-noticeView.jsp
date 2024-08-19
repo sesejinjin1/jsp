@@ -7,25 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>미니프로젝트</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-    
-
-.login-container {margin-top: 20%;}
-.login-container h2 {margin-bottom: 20px;font-size: 24px;text-align: center;color: #333;}
-.login-form {width: 100%;}
-.login-form fieldset {border: none;padding: 0;margin: 0;}
-.login-form legend {font-size: 1.2em;color: #007BFF;margin-bottom: 15px;}
-.form-group {margin-bottom: 15px;}
-.form-group label {display: block;margin-bottom: 5px;color: #333;}
-.form-group input {width: 100%;padding: 10px;border: 1px solid #ccc;border-radius: 5px;font-size: 16px;box-sizing: border-box;}
-.form-group button {width: 100%;padding: 10px;border: none;border-radius: 5px;background-color: #007BFF;color: white;font-size: 16px;cursor: pointer;}
-.form-group button:hover {background-color: #0056b3;}
-.link_box {margin-top: 20px;text-align: center;}
-.link_box a {color: #007BFF;text-decoration: none;margin: 0 10px;font-size: 16px;}
-.link_box a:hover {text-decoration: underline;}
-
-    
-    </style>
+        <style>
+			.login-container {margin-top: 20%;}
+			.login-container h2 {margin-bottom: 20px;font-size: 24px;text-align: center;color: #333;}
+		</style>
 </head>
 <body>
     <header>
@@ -85,26 +70,58 @@
 
     <main class="container">
         <div class="login-container">
-        <h2>회원 로그인</h2>
-						<form id="loginForm" action="loginAction.jsp" method="post" class="login-form">
-                            <fieldset>	
-                                	<div class="form-group">
-                                   		<p><label for="userId">아이디</label><input id="userId" name="userId" placeholder="아이디" autofocus="autofocus" type="text" value="" maxlength="15"/></p>
+        <h2>공지사항</h2>
+					<form action="board-delete.jsp" name="board">
+						<%@include file="db.jsp"%>	
+						<%
+							ResultSet rs = null;
+							Statement stmt = null;
+							String boardNo = request.getParameter("boardNo");
+							try{
+								stmt = conn.createStatement();
+								String querytext = "SELECT * FROM board_notice WHERE BOARDNO = " + boardNo;
+								rs = stmt.executeQuery(querytext);
+								if(rs.next()){
+						%>	
+									<input  type="hidden" 
+											value="<%= rs.getString("boardNo") %>" 
+											name="boardNo"> 
+									<div>제목 : <%= rs.getString("title") %></div>
+									<div>내용 : <%= rs.getString("contents") %></div>
+									
+							<%
+								if(session.getAttribute("userId").equals("admin")){
+							%>
+									<button type="button" onclick="fnDelete()">삭제</button>
+									<button type="button" onclick="fnUpdate()">수정</button>
+							<%
+								}else{}
+							%>			
+									<hr>
+									<div>댓글 : 
+										<input class="comment" type="text" placeholder="댓글을 등록하세요." name="comment">
+										<button type="button" onclick="fnComment()">등록</button>
 									</div>
-									<div class="form-group">
-										<p><label for="userPwd">비밀번호</label><input id="userPwd" name="userPwd" placeholder="비밀번호" type="password" value="" maxlength="15"/></p>
-									</div>
-									<div class="form-group">
-										<button type="submit">로그인</button>
-									</div>
-								
-					    	</fieldset>
-                        </form>
-                    <div class="link_box">
-						    <a href="join.jsp">회원가입</a>
-						    <a href="#">아이디찾기</a>
-						    <a href="#">비밀번호찾기</a>
-                    </div>
+								<%
+									querytext = "SELECT * FROM board_comment WHERE BOARDNO = " + boardNo;
+									rs = stmt.executeQuery(querytext);
+									while(rs.next()){
+								%>
+										<div> <%= rs.getString("userId") %> : <%= rs.getString("comment") %> </div>
+										<button type="button">수정</button>
+										<button type="button">삭제</button>
+								<%	} %>		
+									
+								<%			
+										} else {
+											out.println("삭제된 게시글 입니다.");
+										}
+										
+									} catch(SQLException ex) {
+										out.println("SQLException : " + ex.getMessage());
+									}
+								%>
+					</form>	    
         </div>
 						
     </main>
@@ -114,3 +131,37 @@
     </footer>
 </body>
 </html>
+<script>
+
+	function fnUpdate(){
+		var form = document.board;
+		form.action = "board-update.jsp";
+		form.submit();
+	}
+	
+	function fnComment(){
+		var form = document.board;
+		console.log(form.boardNo.value);
+		var url = "comment-insert.jsp?boardNo="+ form.boardNo.value + "&comment=" + form.comment.value;
+		window.open(url , "reset", "width=500, height=500");
+	}
+	
+	function fnReload(){
+		location.reload();
+	}
+	function fnCommentDel(commentNo){
+		var form = document.board;
+		location.href = "comment-delete.jsp?commentNo = " + commentNo;
+		
+	}
+	function fnDelete(){
+		if(!confirm("삭제 하시겠습니까?")){
+		    alert("취소 되었습니다.");
+		    location.reload();
+		}else{
+		var form = document.board;
+		form.action = "board-delete.jsp";
+		form.submit();
+		}
+	}
+</script>

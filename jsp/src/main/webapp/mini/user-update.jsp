@@ -7,26 +7,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>미니프로젝트</title>
 <link rel="stylesheet" href="styles.css">
-<style>
-.join-form {width: 100%;max-width: 600px;margin: 0 auto;}
-fieldset {border: none;padding: 0;margin: 0;}
-legend {font-size: 1.2em;color: #007BFF;margin-bottom: 15px;}
-.inbox p {margin-bottom: 15px;display: flex;align-items: center;}
-.inbox label {display: block;margin-right: 10px;color: #333;width: 120px;}
-.inbox input[type="text"], .inbox input[type="password"] {flex: 1;padding: 10px;border: 1px solid #ccc;border-radius: 5px;font-size: 16px;box-sizing: border-box;}
-.inbox button {padding: 10px 15px;border: none;border-radius: 5px;background-color: #007BFF;color: white;font-size: 16px;cursor: pointer;margin-left: 10px;}
-.inbox button:hover {background-color: #0056b3;}
-.inbox input[type="button"], .inbox input[type="submit"] {cursor: pointer;}
-.inbox input[type="radio"] {margin-right: 5px;}
-.form-actions {margin-left: 40%;}
-</style>
 </head>
 <body>
 	<header>
 		<div class="top-bar">
-            <div class="actions">
+           <div class="actions">
             	<%if((String)session.getAttribute("userId") != null){ %>
             	<p> <%= (String)session.getAttribute("userId") %> 님 환영합니다.</p>
+            		<%if(session.getAttribute("status").equals("A")){ %>
+            			<a href="userlist.jsp" class="logout">회원목록</a>
+            			<%} %>
+            			
             	<a href="logoutAction.jsp" class="logout">로그아웃</a>
             	<%} else{%>
                 <a href="login.jsp" class="login">로그인</a>
@@ -69,19 +60,32 @@ legend {font-size: 1.2em;color: #007BFF;margin-bottom: 15px;}
 			</nav>
 		</div>
 	</header>
-
+	<%@include file="db.jsp"%>	
+	<%
+		ResultSet rs = null;
+		Statement stmt = null;
+		String userId = request.getParameter("userId");
+		try{
+			stmt = conn.createStatement();
+			String query = "SELECT * FROM mini_user WHERE userId=" +userId ;
+			rs = stmt.executeQuery(query);
+			System.out.println(query);
+			while(rs.next()){
+		
+	%>
+	
 	<main class="container">
 		<div class="top-section">
-			<h2 style="text-align: center;">회원 가입</h2>
-			<form id="joinForm" action="joinAction.jsp" method="post"
+			<h2 style="text-align: center;">회원 정보 수정</h2>
+			<form id="joinForm" action="userUpdateAction.jsp" method="post"
 				style="text-align: center;" name="joinForm">
-				<fieldset>
+				<fieldset style="width: 80%; margin-left: 10%;">
+					<legend>회원 가입</legend>
 					<div class="inbox">
 						<p>
-							<label for="userId">아이디 </label><input id="userId" name="userId" class="idbox"
+							<label for="userId">아이디 </label><input id="userId" name="userId"
 								style="ime-mode: disabled;" placeholder="아이디"
-								autofocus="autofocus" type="text" value="" maxlength="30" />
-							<button type="button" onclick="fnCheck()"> 중복체크 </button>
+								autofocus="autofocus" type="text" value="<%=rs.getString("userId") %>" maxlength="30" readonly="readonly"/>
 						</p>
 						<p>
 							<label for="userPwd">비밀번호 </label><input id="userPwd"
@@ -115,13 +119,16 @@ legend {font-size: 1.2em;color: #007BFF;margin-bottom: 15px;}
 								name="userEmail1" placeholder="이메일 주소" type="text" value=""
 								maxlength="30" />
 						</p>
-						<p>
-							<label>성별</label><label> 남 <input type="radio" name="userGender"
+						<p><%if(rs.getString("userGender").equals("M")){%>
+							성별 : <label>남 <input type="radio" name="userGender"
 								value="M" checked="checked" ></label> <label>여 <input type="radio"
-								name="userGender" value="F"></label>
+								name="userGender" value="F"></label><%}else{%>
+							성별 : <label>남 <input type="radio" name="userGender"
+								value="M"></label> <label>여 <input type="radio"
+								name="userGender" value="F"  checked="checked" ></label><%} %>
 						</p>
-						<p class="form-actions">
-							<button type="button" onclick="fnSave()">회원가입</button>
+						<p>
+							<button type="submit">정보수정</button>
 							<button type="reset">다시입력</button>
 						</p>
 					</div>
@@ -130,10 +137,14 @@ legend {font-size: 1.2em;color: #007BFF;margin-bottom: 15px;}
 		</div>
 
 	</main>
-
+<%}} catch(SQLException ex) {
+			out.println("SQLException : " + ex.getMessage());
+		}%>
 	<footer>
 		<p>&copy; 세세진진 사이트.</p>
 	</footer>
 </body>
 </html>
-<script src="joincheck.js"></script>
+<script>
+
+</script>

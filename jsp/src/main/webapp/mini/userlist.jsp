@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.io.PrintWriter" %>
@@ -89,8 +89,8 @@
 								<th>성별</th>
 								<th>이메일주소</th>
 								<th>권한</th>
-								<td>정보수정</td>
-								<td>회원삭제</td>
+								<th>정보수정</th>
+								<th>회원삭제</th>
 								<th>로그인 초기화</th>
 								
 							</tr>
@@ -114,12 +114,12 @@
 									<td><%= rs.getString("userName") %></td>
 									<td><%= rs.getString("userJumin1") %> - <%= rs.getString("userJumin2") %></td>
 									<td><%= rs.getString("userPhone") %></td>
-									<td><%= rs.getString("userGender") %></td>
+									<%if(rs.getString("userGender").equals("M")){%><td>남자</td><%}else{%><td>여자</td><%} %>
 									<td><%= rs.getString("userEmail") %></td>
 									<td><%= status %></td>
-									<td><a href="#" class="updateUser" style="color: black; text-decoration: none; font-size: 15px; font-weight: bold;">수정하기</a></td>
-									<td><a href="#" class="deleteUser">삭제하기</a></td>
-										<%	if(rs.getInt("cnt")>=5){ %>	
+									<td><a href="user-update.jsp?userId='<%=rs.getString("userId")%>'&userGender='<%=rs.getString("userGender") %>'" class="updateUser" style="color: black; text-decoration: none; font-size: 15px; font-weight: bold;">수정하기</a></td>
+									<td><a href="javascript:fnDelete('<%= rs.getString("userId") %>')" class="deleteUser">삭제하기</a></td>
+										<% if(rs.getInt("cnt")>=5){ %>	
 												<td>								
 												<button onclick="fnReset('<%= rs.getString("userId") %>')">초기화</button>
 												</td>
@@ -164,6 +164,14 @@
 		    location.reload();
 		}else{
 		    location.href="pwd-reset.jsp?userId=" +userId ;
+		}
+	}
+	function fnDelete(userId){
+		if(!confirm("삭제 하시겠습니까?")){
+		    alert("취소 되었습니다.");
+		    location.reload();
+		}else{
+		    location.href="user-delete.jsp?userId=" +userId ;
 		}
 	}
 
