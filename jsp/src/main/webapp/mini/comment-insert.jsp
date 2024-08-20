@@ -47,7 +47,6 @@
 </html>
 <script>
  	alert("저장되었습니다.");
-	window.close();
-	window.opener.fnReload();
+ 	location.href = document.referrer;
 </script>
 ​

@@ -11,12 +11,90 @@
 <link rel="stylesheet" href="styles.css">
 
 <style>
-	table, th,  tr,  td{
-	 border : 1px solid black ;
-	 border-collapse: collapse;
-	 padding: 10px;
-	}
+.container1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
 
+/* 상단 섹션 스타일링 */
+.top-section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.top-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* 테이블 스타일링 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+td a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* 버튼 스타일링 */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+
+/* 삭제 링크 스타일링 */
+.deleteUser {
+    color: #dc3545;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.deleteUser:hover {
+    text-decoration: underline;
 }
 	
 </style>
@@ -47,7 +125,7 @@
 				<ul class="nav-menu">
 					<li class="nav-item dropdown"><a href="#">메뉴1</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">서브 메뉴 1</a></li>
+							<li><a href="board-notice.jsp">공지사항</a></li>
 							<li><a href="#">서브 메뉴 2</a></li>
 							<li><a href="#">서브 메뉴 3</a></li>
 						</ul></li>
@@ -74,7 +152,7 @@
 		</div>
 	</header>
 
-	<main class="container">
+	<main class="container1">
 		<div class="top-section">
 		<%if(session.getAttribute("status").equals("A")){ %>
 			<h2 style="text-align: center;">회원 목록</h2>

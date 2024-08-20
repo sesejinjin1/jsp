@@ -49,7 +49,7 @@
                     <li class="nav-item dropdown">
                         <a href="#">메뉴1</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">서브 메뉴 1</a></li>
+                            <li><a href="board-notice.jsp">공지사항</a></li>
                             <li><a href="#">서브 메뉴 2</a></li>
                             <li><a href="#">서브 메뉴 3</a></li>
                         </ul>

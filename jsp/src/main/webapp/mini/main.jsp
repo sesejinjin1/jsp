@@ -96,23 +96,23 @@
         </section>
 
         <section class="bottom-section">
-            <h2>공지사항</h2>
+            <h2>목록2</h2>
             <div class="info-boxes">
                 <div class="info-box">
-                    <h3>공지사항 1</h3>
-                    <p>공지사항 1.</p>
+                    <h3>목록2목록2</h3>
+                    <p>목록2목록2.</p>
                 </div>
                 <div class="info-box">
-                    <h3>공지사항 2</h3>
-                    <p>공지사항 2 .</p>
+                    <h3>목록2목록2 2</h3>
+                    <p>목록2목록2목록2 2 .</p>
                 </div>
                 <div class="info-box">
-                    <h3>공지사항 3</h3>
-                    <p>공지사항 3 .</p>
+                    <h3>목록2목록2</h3>
+                    <p>목록2 .</p>
                 </div>
                 <div class="info-box">
-                    <h3>공지사항 4</h3>
-                    <p>공지사항 4 .</p>
+                    <h3>4</h3>
+                    <p>목록24 .</p>
                 </div>
             </div>
         </section>
