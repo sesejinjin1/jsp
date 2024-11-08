@@ -30,7 +30,9 @@
           <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white">
           <img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white">
           <img src="https://img.shields.io/badge/Jsp-007396?style=for-the-badge&logo=Jsp&logoColor=white">
-          <img src="https://img.shields.io/badge/Jsp-007396?style=for-the-badge&logo=Jsp&logoColor=white">
+          <img src="https://img.shields.io/badge/Servlet-000000?style=for-the-badge&logo=Servlet&logoColor=white">
+          <img src="https://img.shields.io/badge/Oracle-FF0000?style=for-the-badge&logo=Oracle&logoColor=white">
+          <img src="https://img.shields.io/badge/Jquery-007396?style=for-the-badge&logo=Jquery&logoColor=white">
           </div>
     </div>
    <!--    <div style= "text-align:left;">
