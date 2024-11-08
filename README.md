@@ -9,9 +9,6 @@
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🗓 개발 기간 </h2>  
     <ul>
         <li> <h4>?? ~ ??</h4>
-            <ul>
-                <li>프로젝트 개발 진행</li>                    
-            </ul>
         </li>
     </ul>
 </div>
