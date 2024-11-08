@@ -1,12 +1,47 @@
-# 프로젝트 소개
-
-+ jsp를 활용해 로그인가 회원가입 및 회원수정, 게시판 CRUD, 관리자 권한을 이용한 회원 관리를 하는 사이트를 만들었습니다.
-
-
-## 개발 기간
-
-+ 2024.08.12 ~ 2024.08.20
-
-## 사용 언어
-
-https://img.shields.io/badge/Test-000000?style=for-the-badge&logoColor=white
+<div style= "text-align:left;">
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">💡 프로젝트 소개 </h2>
+     <ul>
+        <li>  <h4>jsp를 활용해 로그인과 회원가입 및 회원수정, 게시판 CRUD, 관리자 권한으로 회원 관리 할 수 있는 사이트를 만들었습니다.</h4>
+        </li>
+    </ul>
+</div>
+<div style= "text-align:left;">
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🗓 개발 기간 </h2>  
+    <ul>
+        <li> <h4>10/28 ~ 10/02</h4>
+            <ul>
+                <li>프로젝트 개발 진행</li>                    
+            </ul>
+        </li>
+    </ul>
+</div>
+<div style= "text-align:left;">
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🎬시연영상 </h2>  
+    https://youtu.be/c08y3F-U16Q
+</div>    
+<div style= "text-align:left;"> 
+    <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;">  </div> 
+</div>
+<div style= "text-align:left;">
+    <h2 style="color: #282d33;"> 🛠️ 사용 언어 </h2>
+    <div style="margin: 0 auto; text-align: left;" align= "left">
+          <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white">
+          <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
+          <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=Java&logoColor=white">
+          <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">
+          <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
+          <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white">
+          </div>
+    </div>
+   <!--    <div style= "text-align:left;">
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🎞 시연 영상 </h2>    
+      <a href="https://www.youtube.com/watch?">▶FURNATURE 시연영상</a>
+    </div> -->
+<!--     <div style= "text-align:left;">
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">  📑 페이지별 기능 </h2>      
+    </div>
+    <div style= "text-align:left;">   
+    <div style= "text-align:left;">
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🎇 프로젝트 후기 </h2>       
+    </div> -->
+    
